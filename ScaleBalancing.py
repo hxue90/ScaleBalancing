@@ -1,16 +1,28 @@
 import ast
+import itertools
 
-debug_Mode = True
+debug_Mode = False
 
 def debug_Print(msg):
     if debug_Mode == True:
         print(msg)
 
 def determineBalance(scale_Weight, given_Weight):
+    ## Weights already balance
     if (scale_Weight[0] == scale_Weight[1]):
-        return "\""
-    
-    return "Output"
+        return ""
+
+    ## 1 weight on each side Balance Scale
+    for i in given_Weight:
+        if (scale_Weight[0] + i == scale_Weight[1]) or (scale_Weight[0] == scale_Weight[1] + i):
+            return i
+
+    ## 2 weight on used Balance Scale
+    for i in itertools.combinations(given_Weight, 2):
+        if (i[0] + i[1] + scale_Weight[0] == scale_Weight[1]) or (scale_Weight[0] == scale_Weight[1] + i[0] + i[1]) or (scale_Weight[0] + i[0] == scale_Weight[1] + i[1]) or (scale_Weight[0] + i[1] == scale_Weight[1] + i[0]):
+            return str(i[0]) + "," + str(i[1])
+
+    return "No possible solution. Please try again."
 
 def checkInput(list_Input):
     ## Check Scale Weight Inputs
@@ -54,11 +66,15 @@ def checkInput(list_Input):
     return scale_Weight, given_Weight
 
 def main():
-    list_Input = input("Input: ") ##"[3, 4]", "[7, 7, 2, 1]"
+    ##"[3, 4]", "[7, 7, 2, 1]"
+    ##"[13, 4]", "[1, 2, 3, 6, 14]"
+    ##"[13, 4]", "[14, 6, 3, 2, 1]"
+    ##"[8, 3]", "[8]"
+    list_Input = input("Input:")
     scale_Weight, given_Weight = checkInput(ast.literal_eval(list_Input))
 
     determine_Balance = determineBalance(scale_Weight, given_Weight)
-    print(determine_Balance)
+    print("Output:\"" + str(determine_Balance) + "\"")
 
 if __name__ == "__main__":
     main()
