@@ -37,31 +37,33 @@ def checkInput(list_Input):
         return "Error: Please enter 2 positive weights for the Balance Scale (left and right side weights)"
 
     for i in scale_Weight:
-        if (i < 0):
-            return "Error: Please enter positive numeric values for the Balance Scale (left and right side weights)"
         try:
             int(i)
         except ValueError:
             return "Error: Please enter positive numeric values for the Balance Scale (left and right side weights)"
+
+        if (i < 0):
+            return "Error: Please enter positive numeric values for the Balance Scale (left and right side weights)"
         
     ## Check Given Weight Inputs
-    given_Weight = sorted(ast.literal_eval(list_Input[1]))
+    given_Weight = ast.literal_eval(list_Input[1])
     debug_Print(given_Weight)
 
     if (len(given_Weight) < 1):
         return "Error: Please enter at least 1 positive numeric weight for the Weight Balance"
 
     for i in given_Weight:
-        if (i == 0):
-            return "Error: Please enter positive numeric value for the Weight Balance (excluding 0)"
-        if (i < 0):
-            return "Error: Please enter positive numeric value for the Weight Balance (excluding 0)"
         try:
             int(i)
         except ValueError:
             return "Error: Please enter positive numeric values for the Weight Balance (excluding 0)"
 
-    return determineBalance(scale_Weight, given_Weight)
+        if (i == 0):
+            return "Error: Please enter positive numeric value for the Weight Balance (excluding 0)"
+        if (i < 0):
+            return "Error: Please enter positive numeric value for the Weight Balance (excluding 0)"
+
+    return determineBalance(scale_Weight, sorted(given_Weight))
 
 def main():
     ##"[3, 4]", "[7, 7, 2, 1]"
