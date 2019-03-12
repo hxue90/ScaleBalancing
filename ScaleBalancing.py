@@ -27,6 +27,7 @@ def determineBalance(scale_Weight, given_Weight):
 
 def checkInput(list_Input):
     ## Check Scale Weight Inputs
+    list_Input = ast.literal_eval(list_Input)
     scale_Weight = ast.literal_eval(list_Input[0])
     debug_Print(scale_Weight)
 
@@ -68,7 +69,7 @@ def main():
     ##"[13, 4]", "[14, 6, 3, 2, 1]"
     ##"[8, 3]", "[8]"
     list_Input = input("Input:")
-    determine_Balance = checkInput(ast.literal_eval(list_Input))
+    determine_Balance = checkInput(list_Input)
     print("Output:\"" + str(determine_Balance) + "\"")
 
 if __name__ == "__main__":
