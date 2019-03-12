@@ -1,6 +1,5 @@
 import ast
 import itertools
-import sys
 
 debug_Mode = False
 
