@@ -92,6 +92,41 @@ class ScaleBalancingTestCases(unittest.TestCase):
         self.assertEqual(str(ScaleBalancing.checkInput(inputValue)), '')
         print('Output:\"' + str(ScaleBalancing.checkInput(inputValue)) + "\"")
         print("Test Case: No_Weight_Needed - PASSED")
-        
+
+    def test_IncorrectFormat_scaleBalance(self):
+        inputValue = '"[, 8]", "[1, 1]"'
+        print('Input:' + str(inputValue))
+        self.assertEqual(str(ScaleBalancing.checkInput(inputValue)), 'Error: Please enter the correct format for the Balance Scale')
+        print('Output:\"' + str(ScaleBalancing.checkInput(inputValue)) + "\"")
+        print("Test Case: IncorrectFormat_scaleBalance - PASSED")
+
+    def test_IncorrectFormat_givenWeight(self):
+        inputValue = '"[8, 8]", "[1, , 1]"'
+        print('Input:' + str(inputValue))
+        self.assertEqual(str(ScaleBalancing.checkInput(inputValue)), 'Error: Please enter the correct format for the Weight Balance')
+        print('Output:\"' + str(ScaleBalancing.checkInput(inputValue)) + "\"")
+        print("Test Case: IncorrectFormat_givenWeight - PASSED")
+
+    def test_2_Weight_Case1(self):
+        inputValue = '"[5, 9]", "[1, 2, 6, 7]"'
+        print('Input:' + str(inputValue))
+        self.assertEqual(str(ScaleBalancing.checkInput(inputValue)), '2,6')
+        print('Output:\"' + str(ScaleBalancing.checkInput(inputValue)) + "\"")
+        print("Test Case: 2_Weight_Case1 - PASSED")
+
+    def test_2_Weight_Case2(self):
+        inputValue = '"[9, 5]", "[1, 2, 6, 7]"'
+        print('Input:' + str(inputValue))
+        self.assertEqual(str(ScaleBalancing.checkInput(inputValue)), '2,6')
+        print('Output:\"' + str(ScaleBalancing.checkInput(inputValue)) + "\"")
+        print("Test Case: 2_Weight_Case2 - PASSED")
+
+    def test_2_Weight_Case3(self):
+        inputValue = '"[3, 3]", "[1, 1, 2, 2, 3, 3]"'
+        print('Input:' + str(inputValue))
+        self.assertEqual(str(ScaleBalancing.checkInput(inputValue)), '')
+        print('Output:\"' + str(ScaleBalancing.checkInput(inputValue)) + "\"")
+        print("Test Case: 2_Weight_Case3 - PASSED")
+
 if __name__ == "__main__":
     unittest.main()

@@ -1,7 +1,7 @@
 import ast
 import itertools
 
-debug_Mode = True
+debug_Mode = False
 
 def debug_Print(msg):
     if debug_Mode == True:
