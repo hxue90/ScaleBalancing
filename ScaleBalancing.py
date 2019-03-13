@@ -71,10 +71,6 @@ def checkInput(list_Input):
     return determineBalance(scale_Weight, sorted(given_Weight))
 
 def main():
-    ##"[3, 4]", "[7, 7, 2, 1]"
-    ##"[13, 4]", "[1, 2, 3, 6, 14]"
-    ##"[13, 4]", "[14, 6, 3, 2, 1]"
-    ##"[8, 3]", "[8]"
     list_Input = input("Input:")
     determine_Balance = checkInput(list_Input)
     print("Output:\"" + str(determine_Balance) + "\"")
