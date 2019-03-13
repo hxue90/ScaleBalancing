@@ -1,7 +1,7 @@
 import ast
 import itertools
 
-debug_Mode = False
+debug_Mode = True
 
 def debug_Print(msg):
     if debug_Mode == True:
@@ -27,7 +27,10 @@ def determineBalance(scale_Weight, given_Weight):
 def checkInput(list_Input):
     ## Check Scale Weight Inputs
     list_Input = ast.literal_eval(list_Input)
-    scale_Weight = ast.literal_eval(list_Input[0])
+    try:
+        scale_Weight = ast.literal_eval(list_Input[0])
+    except SyntaxError:
+        return "Error: Please enter the correct format for the Balance Scale"
     debug_Print(scale_Weight)
 
     if (len(scale_Weight) > 2):
@@ -45,7 +48,10 @@ def checkInput(list_Input):
             return "Error: Please enter positive numeric values for the Balance Scale (left and right side weights)"
         
     ## Check Given Weight Inputs
-    given_Weight = ast.literal_eval(list_Input[1])
+    try:
+        given_Weight = ast.literal_eval(list_Input[1])
+    except SyntaxError:
+        return "Error: Please enter the correct format for the Weight Balance"
     debug_Print(given_Weight)
 
     if (len(given_Weight) < 1):
