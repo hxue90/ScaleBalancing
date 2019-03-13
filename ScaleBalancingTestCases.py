@@ -84,14 +84,14 @@ class ScaleBalancingTestCases(unittest.TestCase):
         print('Input:' + str(inputValue))
         self.assertEqual(str(ScaleBalancing.checkInput(inputValue)), 'No possible solution. Please try again.')
         print('Output:\"' + str(ScaleBalancing.checkInput(inputValue)) + "\"")
-        print("Test Case: No_Weight - PASSED")
+        print("Test Case: No_Weight_Solution - PASSED")
 
     def test_No_Weight_Needed(self):
         inputValue = '"[8, 8]", "[1, 1]"'
         print('Input:' + str(inputValue))
         self.assertEqual(str(ScaleBalancing.checkInput(inputValue)), '')
         print('Output:\"' + str(ScaleBalancing.checkInput(inputValue)) + "\"")
-        print("Test Case: No_Weight - PASSED")
+        print("Test Case: No_Weight_Needed - PASSED")
         
 if __name__ == "__main__":
     unittest.main()
